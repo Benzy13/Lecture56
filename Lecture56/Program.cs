@@ -31,9 +31,9 @@ namespace Lecture56
 
             if (myList.Count == 1)
                 Console.WriteLine("{0} like your post", myList[0]);
-            
+
             else if (myList.Count == 2)
-                Console.WriteLine("{0} and {1} like your post.", myList[0], myList[1]); 
+                Console.WriteLine("{0} and {1} like your post.", myList[0], myList[1]);
 
             else
                 Console.WriteLine("{0}, {1} and {2} others like your post.", myList[0], myList[1], (myList.Count - 2));
@@ -64,9 +64,9 @@ namespace Lecture56
             int i = 0;
             while (i < numbers.Length)
             {
-                Console.WriteLine("{0}) Enter Unique Number:", i+1);
+                Console.WriteLine("{0}) Enter Unique Number:", i + 1);
                 string input = Console.ReadLine();
-                int number = Convert.ToInt32(input); 
+                int number = Convert.ToInt32(input);
 
                 foreach (int item in numbers)
                 {
@@ -94,10 +94,43 @@ namespace Lecture56
             //The list of numbers may include duplicates.
             //Display the unique numbers that the user has entered.
 
-            //Question 5
-            //Write a program and ask the user to supply a list of comma separated numbers (e.g 5, 1, 9, 2, 10).
-            //If the list is empty or includes less than 5 numbers, display "Invalid List" and ask the user to re-try;
-            //otherwise, display the 3 smallest numbers in the list.
+            var numList = new List<int>();
+
+            Console.WriteLine("Continuously enter a number or type Quit to exit");
+
+            int j = 0;
+            while (true)
+            {
+                Console.Write("{0}) Enter Number:", j + 1);
+                string input = Console.ReadLine();
+                
+
+                if (input == "Quit")
+                    break;
+
+                else
+                {
+                    numList.Add(Convert.ToInt32(input));
+                    j++;
+                }
+                  
+            }
+            var uniques = new List<int>();
+            foreach (var number in numList)
+            {
+                if (!uniques.Contains(number))
+                    uniques.Add(number);
+            }
+
+            Console.WriteLine("Unique numbers:");
+            foreach (var number in uniques)
+                Console.WriteLine(number);
         }
+
+        //Question 5
+        //Write a program and ask the user to supply a list of comma separated numbers (e.g 5, 1, 9, 2, 10).
+        //If the list is empty or includes less than 5 numbers, display "Invalid List" and ask the user to re-try;
+        //otherwise, display the 3 smallest numbers in the list.
+    }
     }
 }
